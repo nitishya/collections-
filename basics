@@ -1,0 +1,37 @@
+A collections - its an object that represent a group of related objects.
+
+In general, the objects in a collection share some common relationship or purpose.
+
+different types of collections - 
+1. arrays 
+2.lists 
+3.vectors 
+4.sets 
+5.queues 
+6.tables 
+7.dictionaries 
+8.maps 
+
+
+Oracle definition to Collections Framework- 
+"A unified architecture for representing and manipulating collections, enabling collections to be manipulated independently of implementation details."
+
+
+THE List - 
+A list is an ordered collection (also known as sequence).This can be  sequence in memory like a ArrayList which maintain the link between the next and
+the previous values as a Linked List.
+
+
+
+The Queue ->
+A Queue is a collection designed for holding elements prior to processing.In other words, the processing order matters, so the first and the last positions, or the head 
+and tail , are prioritied.
+
+
+A Set ->
+A Set is a collection conceptually based off of a mathematical set. Importantly it contains no duplicate elements, and isnt natuarally sequenced or oredered.
+Hashset , Treeset and the LinkedHashSet.
+
+
+A Map -> 
+A Map is a collection that stores the key and  value pairs 
