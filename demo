@@ -1,0 +1,14 @@
+What is collection class ?
+collection class and the collection framework both are different.
+The framework contains many interfaces and implemented classes as well as helper classes for which this collection class is just a example.
+
+
+
+collections - growable in nature , add or remove any number of elements according to need. 
+              can hold any kind of data .
+
+
+
+
+collection - group of discrete object in single unit.
+Collection Framework = interfaces + classes 
