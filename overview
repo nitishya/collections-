@@ -1,0 +1,97 @@
+intialise many variable -- individual approach
+int x= 9 ;
+int y= 10 ;
+int z = 11;
+
+
+to initialize 10000 variable - huge number of values 
+--> Arrays come in 
+Student[] s = new Student[1000];
+biggest advantage - array can represent huge number of values by single variable.
+
+Limitations of arrays ->
+1. Arrays are fixed in size . we should know the size in advance which may not possible always .
+2. Arrays can hold only homogeneous type of elements. problem can be solved by taking object array.
+3. No underlying Data Structure i.e no readymade support available you need to code for your problems .
+
+
+To overcome these  problems we go to collections -
+1. Collections are growable in nature .
+2. Collections can hold homogeneous as well as heterogeneous objects .
+3. Collection class is implemented based on some standard data structure.
+
+
+Which one to prefer -
+Arrays - if you know the size in advance highly recommended .
+Collections  - if you dont know the size or need to store heterogeneous objects . as it provides growable nature due to which we need to compromise with performance.
+
+
+for example suppose  array - of crore elements 
+                    in arrayList - to add 1 core 1th element -  1st all the elements are copied to new arraylist of bigger size than 1th element is added next to it 
+                                                                and the pointer start pointing to the new arraylist making the older array eligible for garbage collection.
+
+
+
+     Arrays                          |             collections
+1.fixed in size                      |         Growable in nature 
+2.with respect to memory ❌          |        with respect to memory ✔️
+3.with resopect to performance✔️     |        with respect to performance ❌
+4.can hold only homogeneous element  |        can hold both homogeneous and hetrogeneous element
+5.underlying Data Structure ❌       |        Standard Data Structure ✔️
+6.primitive and object can hold       |        hold only object 
+
+
+
+
+
+Collections - a group of individual objects 
+Collection Framework - several classes and interfaces which can be used to represent a group of object as a single entity.
+
+
+Difference between collection and collections -
+
+                             collection                                       |             collections 
+1. interface                                                                  |                  class 
+2.used to represent a group of individual objects as a single entity.         |          is an utility class present in java.util.package to define several utility methods 
+                                                                              |          (like Sorting,Searching..) for collection objects 
+
+
+Differences between List and Set  -
+                      List                              |               Set 
+    👉Duplicates allowed                               |           Duplicates not aloowed 
+    👉insertion order preserved                        |           insertion order not preserved 
+
+
+question - which one will provide much information - classs or interface 
+answer  - interface will provide much information , class is dummy thing which implemnts interface 
+
+Colections framework - 9 Key interfaces 
+
+1.collection -  if we want to represent a group of objects as a single entity then we should go for collection .
+             -  collection interface defines most common methods which are applicable for any Collection object.
+             -  collection interface is considered as root interface of collection Framework.
+             -  👉 There is no concrete class which implements collection interface directly.
+
+2.List Interface  - Child interface of collection inteface 
+                  - If we want to represent a group of individual objects as a single entity where duplicates are allowed and insertion order is preserved then we should go for list.
+                  - implementation class for List interface are -> ArrayList  , Linked List and Vector ->Stack(leagcy classes).
+
+3.Set Interface   -child interface of collection interface 
+                  - duplicate not allowed and insertion order is not preserved.
+                  - implementation class for Set InterFace are -> HashSet -> LinkedHashSet 
+
+4.SortedSet Interface - Child interface of Set Interface
+                      - represent a group of individual objects as a single entity where duplicates are not allowed but all objects should be inserted according to some 
+                        sorting order then we should go for SortedSet.
+
+5.NavigableSet Interface - Child interface of SortedSet Interface 
+                          - several methods for navigation purposes
+
+6.Queue Interface  - Child interface of collections 
+                   - If we want to represent a group of individual objects prior to processing then we should go for Queue.
+                   - implementation class for Queue - PriorityQueue 
+                                                    - Blocking Queue ->LinkedBlocking Queue
+                                                                     ->PriorityBlocking Queue
+
+7.Map Interface - Map is not child interface of collection Interface .
+                - implementation classes of Map -> HashMap->LinkedHashMap
