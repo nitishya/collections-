@@ -94,4 +94,26 @@ Colections framework - 9 Key interfaces
                                                                      ->PriorityBlocking Queue
 
 7.Map Interface - Map is not child interface of collection Interface .
+                - Key value pairs - duplicate keys are not allowed but values can be duplicate
                 - implementation classes of Map -> HashMap->LinkedHashMap
+                                                -> WeakHashMap
+                                                -> IdentityHashMap
+                     Dictionary(abstract class) -> Hashtable->Properties
+                                                -> SortedMap(I) -> NavigableMap(I) -> TreeMap
+
+Need Sorting go for ->
+8.Comparable(I) - default natural sorting order 
+9.Comparator(I) - customised sorting order 
+
+Want to collect object one by one go for ->
+Cursors -> 1. Enumeration(I)
+           2. Iterator(I)
+           3. ListIterator(I)
+
+Utility classes in collections framework 
+1. Collections  - conatins several utility methods for collection classes
+2. Arrays       - contains several utility methods for Arrays 
+
+
+
+           
