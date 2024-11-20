@@ -1,0 +1,16 @@
+List Interface -> child interface of collection 
+
+when go for list - need duplicates and insertion order preserved 
+
+index is used to differentiate between two duplicate objects
+insertion order preserved by placing 1st element at index 0 , 2nd at index 1 similarly insertion order can  be  preserved.
+
+methods available in List->  all collection methods 
+                         -> add(int index, Oject O )
+                         -> addAll(int index, Collection c)
+                         -> remove(int index)
+                         -> indexOf( "A")
+                         -> lastIndexOf("A") 
+                         -> get(int Index)
+                         -> set(int index,Object new )
+                         -> ListIterator listIterator()
