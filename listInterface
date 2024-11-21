@@ -14,3 +14,154 @@ methods available in List->  all collection methods
                          -> get(int Index)
                          -> set(int index,Object new )
                          -> ListIterator listIterator()
+
+Implementation classes - ArrayList , Linked List , Vector 
+
+ArrayList -> Resizable array or growable array
+          -> Duplicates are allowed 
+          -> Insertion order is preserved 
+          -> Hetrogeneous objects are allowed (Except TreeSet and TreeMap )
+          -> "null" insertion is possible 
+
+constructors =>
+
+1. ArrayList l = new ArrayList();
+   new array of default size - 10 will be created and if  we try to insert the 11th element than its 
+   new capacity = (current capacity * 3/2) + 1 ;
+   and the pointer will start pointing to the new array making the previous arrray eligible for garbage collection.
+
+2. ArrayList l = new ArrayList(int initialCapacity);
+   contructor with predefined capacity to increase the performance 
+
+3. ArrayList l = new ArrayList(Collection c)
+   constructor with any collection object it may be linkedList , Stack  . If you want to create a equivalent object . 
+   It is meant for interconversion of objects.
+
+in any collection the output will be like [A,10,A, null] i.e.. in square brackets because whenever we try to print any object 
+refrence internally toString() method will be called and in every collection the toString method is implemented like [...] .
+
+
+
+----------------------java code for the arrayList --------------------------------
+package collect;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListOperationsExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<Object> num = new ArrayList<>();  //generics of object type used 
+		num.add(12);
+		num.add(57);
+		num.add(21);
+		num.add("A"); 
+		num.add(null);
+
+		System.out.println("List after adding elements " + num);		
+		num.add(2, 65);		
+		System.out.println("List after adding elements " + num);		
+		
+		ArrayList l = new ArrayList();   //generics came lator will go on that 
+		l.add(1);
+		l.add("P");
+		l.add(null);
+		
+		System.out.println("the arraylist with heterogeneos object is" + l);
+		
+	}
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+
+goal of collection - to hold and transfer objects from one place to another place 
+->To hold the data and transfer compulsaraly it should be serializable
+=> To support this type of requirement every collection class implements serializable interface.
+
+
+sender ->arrayList (serializable) ----------- --------- --------- ----> arraylist (cloned to use)<-reciever
+
+->every collection class already implements clonnable interface
+
+------------------------------------------------------------------------------------------------------------------------------
+ArrayList and Vector implements Random Access Interface-> any random element we can acess with the same speed.
+-> If our frequent operation is retrieval operation then arrayList is the best choice.
+RandomAccess Interface -> present in java.util
+                        -> Marker (Interface)
+
+
+    ArrayList l1 = new ArrayList();
+		LinkedList l2 = new LinkedList();
+		System.out.println(l1 instanceof Serializable); //true
+		System.out.println(l2 instanceof Serializable); //true
+		System.out.println(l1 instanceof Cloneable);    //true
+		System.out.println(l2 instanceof Cloneable);    //true
+		System.out.println(l1 instanceof RandomAccess); //true
+		System.out.println(l2 instanceof RandomAccess); //false
+		
+->If our frequent operation is insertion/removal in the middle than Arraylist is the worst choice(because several shift operation are required).
+
+
+What  is the difference between the arrayList and the vector.
+                    ArrayList                                   |                Vector 
+  👉   non synchronized methods                                 |         synchornized methods
+  👉   not thread Safe                                          |        thread Safe
+  👉   performance is relatively high                           |        relatively performance is low 
+  👉   1.2 v non legacy class                                   |        1.0 v legacy class
+
+
+I want to use ArrayList Only and also want thread safety . How to achieve synchronized version of ArrayList Object ?
+by using Collection class synchronizedList() method.
+
+        public static List synchronizedList(List l)
+
+        ArrayList l = new ArrayList();               //non- synchronized
+        List sl = Collections.synchronizedList(l);  //synchronized
+
+-------------------------------------------------------------x----------------------------------------------------------x----------------------------------------------------
+
+LinkedList class -> If we want to insert/delete in the middle of the list 
+                 -> In linked List the elements is not stored at consecutive location of the memory 
+                 -> underlying data structure is Doubly LinkedList
+                 -> Insertion order is preserved.
+                 -> Duplicates are allowed.
+                 -> Heterogeneous Elements are allowed
+                 -> null insertion is possible.
+                 -> Linked List implements Serializable and Clonable interfaces but not RandomAccess Interface.
+
+disadvantage ->  retrival operation takes time as it have to go to each node for next node address.
+
+methods in Linked list -> addFirst()
+                       -> addLast()
+                       -> getFirst()
+                       -> getLast()
+                       -> removeFirst()
+                       -> removeLast()
+
+Constructors ->
+1. LinkedList l = new LinkedList();   //creates an empty LinkedList Object
+2. LinkedList l = new LinkedList(Collection c);  //creates an equivalent LinkedList Object for the  given Collection
+
+
+package collect;
+import java.util.LinkedList;
+public class linkedListDemo {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		LinkedList l = new LinkedList();
+		l.add("nitish");
+		l.add(30);
+		l.add(null);
+		l.set(0,"Software");
+		l.add(0,"venky");
+		l.removeLast();
+		l.addFirst("CCC");
+		System.out.println(l);		
+	}
+
+}
+
+
+                       
