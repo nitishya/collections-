@@ -164,4 +164,107 @@ public class linkedListDemo {
 }
 
 
+diffeerence between ArrayList and LinkedList 
+
+                    ArrayList               |          LinkedList
+Best choice for Retrieval                   |        Best Choice for insertion or deletion in the middle 
+Worst choice for insertion and deletion     |        Worst choice for retrieval 
+Resizable or growable array                 |        Double LinkedList 
+Implement RandomAccess                      |        doesnt implement RandomAccess Interface 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Vector class -> UNderlying data structure is Resizable Array /Growable array 
+                -> Duplicates are allowed 
+                -> Insertion order is preserved 
+                -> 'null' insertion is possible 
+                -> Heterogeneous objects are allowed 
+                -> implements Serializable and clonable and RandomAccess Interface.
+                -> Most of the methods present in vector are synchronized . Hence vector object is thread Safe.
+                -> Best Choice is the frequent operation is retrieval.
+
+Vector Specific Methods -> as its older version its method name are lengthy 
+                        -> Remove(Object O)
+                        -> removeElement(Object o)
+                        -> remove(int index)
+                        -> RemoveElementAt(int index)
+                        -> clear()
+                        -> removeAllElements()
+To retireive elements -> Object get(int index)
+                      -> Object elementAt(int index)
+                      -> Object firstElement ()
+                      -> Object lastElement()
+other methods  ->
+               int size();  <- current how many object are there
+               int capacity();   <- Total how many object we can accomodate 
+               Enumeration elements ();   <-get objects one by one 
+
+
+Vector class constructors ->
+1. Vector v = new Vector();   default intial capacity - 10
+   new capacity = 2* current capacity 
+
+2. Vector v = new Vector(int initial Capacity);   <-performance will be improved 
+3. Vector v = new Vector (int initial Capacity,int incremental capacity)
+4. Vector v = new Vector ( Collection C);  <- create an equivalent Vector Object for the given Collection
+
+
+example code ----
+package collect;
+
+import java.util.Vector;
+
+public class VectorDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Vector v = new Vector();
+	    System.out.println(v.capacity());   //10
+	    for(int i= 1;i<=10;i++) {
+	    	v.addElement(i);
+	    }
+	    System.out.println(v.capacity());    //10
+	    v.addElement("A");
+	    System.out.println(v.capacity());     //20
+	    System.out.println(v);
+
+	}
+
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Stack -> Child class of Vector 
+      -> Speacially designed class for Last In First Out (LIFO)
+
+contructor -> Stack s = new Stack();
+
+various methods for Stack -> push ()= to add an object to the queue 
+                          -> pop()  => to remove and return last element of the stack 
+                          -> peek()  => to return the top of the stack without removal 
+                          -> empty() => to check whether stack is empty or not 
+                          -> search("A") => whether a particular element is present or not , return offset 
+
+
+<------ example program ---->
+package collect;
+
+import java.util.Stack;
+
+public class stackDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Stack s = new Stack();
+		s.push("A");
+		s.push("B");
+		s.push("C");
+		System.out.println(s);  //A,B,C
+		System.out.println(s.search("A"));  //3
+		System.out.println(s.search("Z"));  //-1 if it is not available 
+	}
+}
+
+
                        
