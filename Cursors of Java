@@ -1,0 +1,159 @@
+what is cursors - > If we want to retrieve Objects one by one from the Collection , then we should go for Cursors.
+
+there are 3 types of cursors available in java ->
+1) Enumeration
+2) Iterator
+3) ListIterator 
+
+
+
+1. Enumeration ->
+
+Enumeration e = v.elements();  <- v=vector object 
+
+methods in Enumeration - > 1) hasmoreElemnts();
+                           2) nextElement();
+
+
+
+example code -
+package collect;
+
+import java.util.Enumeration;
+import java.util.Vector;
+
+public class EnumeratorDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Vector v = new Vector();
+		for(int i=0; i<=10;i++) {
+			v.addElement(i);
+		}
+		System.out.println(v);
+		Enumeration e = v.elements();
+		while(e.hasMoreElements()) {
+			Integer I = (Integer)e.nextElement();
+					if(I%2==0)
+						System.out.println(I);
+		}
+		
+		System.out.println(v);	
+
+	}
+}
+
+problem - applicable only for legacy classes 
+        - we can only perform read operation 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.Iterator - universal cursor i.e. applicable for any collection object 
+           - can perform read and remove operation 
+
+Public Iterator iterator();
+Iterator itr = c.iterator();  <- c is any collection object 
+
+methods in iterator -> 1) public boolean hasNext();
+                       2) public Object next();
+                       3) public void remove();
+
+
+example code -
+package collect;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class IteratorDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList al = new ArrayList();
+		for (int i=0;i<=10;i++) {
+			al.add(i);
+		}
+		System.out.println(al);
+		Iterator itr = al.iterator();
+		while(itr.hasNext()) {
+			Integer I = (Integer)itr.next();
+			if(I%2 == 0)
+				System.out.println(I);
+			else
+				itr.remove();
+		}
+		
+		System.out.println(al);
+	}
+}
+
+
+Limitations  of iterators ->
+->single direction cursors  i.e.. only forward direction 
+->only perform read and remove operation , cant perform replace or addition of new object 
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.ListIterator(I)  -> child interface of Iterators 
+                   -> Bidirectional cursor 
+                   -> Read , Remove , Replacement and Addition of new objects
+
+COntructor ->
+               public ListIterator listIterator() ;
+               ex - ListIterator ltr = l.listIterator();   l is any list object 
+
+methods in ListIterator -> public boolean hasNext();
+                        -> public Object next();
+                        -> public int nextIndex();
+                        -> public boolean hasPrevious();
+                        -> public Object previous();
+                        -> public int previousIndex();
+                        -> public void remove();
+                        -> public void set(Object new);
+                        -> public void add(Object new);
+
+
+
+example code -->
+package collect;
+
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class ListIteratorDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		LinkedList l = new LinkedList();
+		l.add("Rahul");
+		l.add("kamil");
+		l.add("charu");
+		l.add("nag");
+		System.out.println(l);	
+		
+    	ListIterator ltr =  l.listIterator();
+		while(ltr.hasNext()) {
+			String s = (String)ltr.next();
+			if(s.equals("nag")) {
+				ltr.remove();
+			}else if(s.equals("kamil")){
+				ltr.add("khan");
+			}
+			else if(s.equals("charu")) {
+				ltr.set("sonali");
+			}
+		}
+		System.out.println(l);
+	}
+}
+
+Limitation -> ListIterator is the most powerful cursor but its limitation is , it is applicable only for List implemented class objects and it is not a universal cursor.
+
+Implementation classes of 3 cursors -> print corresponding class name -> e.getClass().getName();
+
+
+
+
+
+            
+           
+
