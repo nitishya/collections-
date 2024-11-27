@@ -48,3 +48,194 @@ public class HashSetDemo {
 	}
 }
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+LinkedHashSet -> CHild clss of HashSet .
+              -> if program requirement is duplicate not allowed but insertion order should be preserved.
+
+
+
+               HashSet                      |          LinkedHashSet
+ 👉Hashtable                               |  Hashtable + LinkedList 
+ 👉insertion order not preserved           |   insertion order is preserved.
+
+
+
+program demo-
+package collect;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		LinkedHashSet h = new LinkedHashSet();
+		h.add("B");
+		h.add("C");
+		h.add("D");
+		h.add("Z");
+		h.add(null);
+		h.add(10);
+		System.out.println(h);
+	}
+}
+
+Used in -Cache Based Application
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SortedSet -> Child interface of Set.
+          -> to represent a group  of individual objects according to some sorting order and duplicates are not allowed .
+
+
+SOrtedSet specific methods -> first() - returns first element of the SortedSet
+                           -> last()  - returns last element of the SortedSet
+                           -> headSet(object obj) - returns the SortedSet whose elements are < obj
+                           -> tailSet(object obj) - returns the SortedSet whose elements are >= obj
+                           -> subSet(object obj1, object obj2) - returns the SortedSet whose elements are >= obj1 and <obj2
+                           -> comparator() -> null(for default sorting order)
+
+default natural sorting order - For numbers : Ascending 
+                              - For Strings : Alphabetical 
+
+
+TreeSet -> balanced Trees 
+        -> duplicates not allowed 
+        -> Insertion order not applicable 
+        -> Sorting order is applicable .
+        -> Heterogeneous objects are not allowed. error - ClassCastException
+        ->  null is allowed only once.
+
+
+TreeSet Constructors -> 4
+1) TreeSet t = new TreeSet(); created an empty TreeSet Object where elements will be inserted according to default natural sorting order.
+2) TreeSet t = new TreeSet(Comparator c);  creates an empty TreeSet Object where elements will be inserted according to customised sorting order.
+3) TreeSet t = new TreeSet(Collection c );
+4) TreeSet t  = new TreeSet( SortedSet s);
+
+
+
+program code -
+package collect;
+
+import java.util.TreeSet;
+
+public class TreeSetDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TreeSet t =  new TreeSet();
+		t.add("A");
+		t.add("a");
+		t.add("B");
+		t.add("Z");
+		t.add("L");
+	//	t.add(new Integer(10)); //heterogeneous object not allowed 
+	//	t.add(null);        //nullpointerexception
+		System.out.println(t);
+
+	}
+}
+
+
+null acceptance  -> to insert null for non empty TreeSet compulsory comparison is required.
+                 -> null insertion is possible for empty TreeSet.
+
+Comparable interface -> in java.lang interface 
+                     -> contains only  one method  i.e. compareTo(object obj);
+                     -> obj1.compareTo(Obj2) return type should be integer.
+                     -> public int CompareTo(object obj)
+
+obj1.compareTo(obj2)  -> returns -ve iff obj1 has to come before obj2
+                      -> returns +ve iff obj1 has to come after obj2
+                      -> returns 0 iff obj1 and obj2 is equal.
+
+
+program code - 
+package collect;
+
+public class CompareToDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.out.println("A".compareTo("Z"));   //-ve
+		System.out.println("Z".compareTo("B"));  //+ve
+		System.out.println("A".compareTo("A"));  //0
+                System.out.println("A".compareTo(null));  //nullpointerexception
+		
+	}
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+comparable - for default natural sorting order .
+comparator - for customised sorting order.
+
+
+
+comparator interface -> customised sorting order 
+                     -> java.util package 
+                     -> 2 mathods  -> comapare() and equals().
+
+
+public int compare(Object obj1, Object obj2)  -> returns -ve  iff obj1 has to come before obj2
+                                              -> returns +ve iff obj2 has to come before obj2
+                                              -> reurns 0 iff obj1 and obj2 are equal
+
+public boolean equals() --- implementing equals() method is optional beacause it is already available in every java class from Object class through inheritance.
+
+
+program code - 
+package collect;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+class myComparator  implements Comparator{
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		Integer I1 = (Integer)o1;
+		Integer I2 = (Integer)o2;
+		
+		if(I1<I2) return 1;
+		else if(I1>I2) return -1;
+		else
+		return 0;
+	}	
+}
+
+public class ComparatorDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TreeSet t = new TreeSet(new myComparator());
+		t.add(10);
+		t.add(0);
+		t.add(15);
+		t.add(20);
+		t.add(20);
+		
+		System.out.println(t);		
+	}
+}
+
+
+Comparison between Comparable and comparator 
+
+                   comparable                |     comparator 
+👉Default sorting order                     |      Customized Sorting order 
+👉present in  java.lang                     |      present in java.util 
+👉compareTo()                               |    compare() and equals()
+👉All wrapper classes and String class      |    implemented class -Collator and RuleBasedCollator 
+
+
+
+
+
+
+
+
